@@ -23,9 +23,15 @@ import { Route as MentorMentorLayoutRouteImport } from './routes/mentor/MentorLa
 import { Route as AdminUsersRouteImport } from './routes/admin/users'
 import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
 import { Route as AdminSessionsRouteImport } from './routes/admin/sessions'
+import { Route as AdminReviewsRouteImport } from './routes/admin/reviews'
+import { Route as AdminReportsRouteImport } from './routes/admin/reports'
+import { Route as AdminPaymentsRouteImport } from './routes/admin/payments'
 import { Route as AdminMentorsRouteImport } from './routes/admin/mentors'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as AdminEnrollmentsRouteImport } from './routes/admin/enrollments'
 import { Route as AdminCoursesRouteImport } from './routes/admin/courses'
+import { Route as AdminCertificatesRouteImport } from './routes/admin/certificates'
+import { Route as AdminCategoriesRouteImport } from './routes/admin/categories'
 import { Route as AdminAnalyticsRouteImport } from './routes/admin/analytics'
 import { Route as AdminAdminLayoutRouteImport } from './routes/admin/AdminLayout'
 
@@ -99,6 +105,21 @@ const AdminSessionsRoute = AdminSessionsRouteImport.update({
   path: '/admin/sessions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminReviewsRoute = AdminReviewsRouteImport.update({
+  id: '/admin/reviews',
+  path: '/admin/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminReportsRoute = AdminReportsRouteImport.update({
+  id: '/admin/reports',
+  path: '/admin/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPaymentsRoute = AdminPaymentsRouteImport.update({
+  id: '/admin/payments',
+  path: '/admin/payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminMentorsRoute = AdminMentorsRouteImport.update({
   id: '/admin/mentors',
   path: '/admin/mentors',
@@ -109,9 +130,24 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminEnrollmentsRoute = AdminEnrollmentsRouteImport.update({
+  id: '/admin/enrollments',
+  path: '/admin/enrollments',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminCoursesRoute = AdminCoursesRouteImport.update({
   id: '/admin/courses',
   path: '/admin/courses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCertificatesRoute = AdminCertificatesRouteImport.update({
+  id: '/admin/certificates',
+  path: '/admin/certificates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCategoriesRoute = AdminCategoriesRouteImport.update({
+  id: '/admin/categories',
+  path: '/admin/categories',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
@@ -131,9 +167,15 @@ export interface FileRoutesByFullPath {
   '/student': typeof StudentRoute
   '/admin/AdminLayout': typeof AdminAdminLayoutRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/certificates': typeof AdminCertificatesRoute
   '/admin/courses': typeof AdminCoursesRoute
+  '/admin/enrollments': typeof AdminEnrollmentsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/mentors': typeof AdminMentorsRoute
+  '/admin/payments': typeof AdminPaymentsRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/reviews': typeof AdminReviewsRoute
   '/admin/sessions': typeof AdminSessionsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
@@ -152,9 +194,15 @@ export interface FileRoutesByTo {
   '/student': typeof StudentRoute
   '/admin/AdminLayout': typeof AdminAdminLayoutRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/certificates': typeof AdminCertificatesRoute
   '/admin/courses': typeof AdminCoursesRoute
+  '/admin/enrollments': typeof AdminEnrollmentsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/mentors': typeof AdminMentorsRoute
+  '/admin/payments': typeof AdminPaymentsRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/reviews': typeof AdminReviewsRoute
   '/admin/sessions': typeof AdminSessionsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
@@ -174,9 +222,15 @@ export interface FileRoutesById {
   '/student': typeof StudentRoute
   '/admin/AdminLayout': typeof AdminAdminLayoutRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/certificates': typeof AdminCertificatesRoute
   '/admin/courses': typeof AdminCoursesRoute
+  '/admin/enrollments': typeof AdminEnrollmentsRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/mentors': typeof AdminMentorsRoute
+  '/admin/payments': typeof AdminPaymentsRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/reviews': typeof AdminReviewsRoute
   '/admin/sessions': typeof AdminSessionsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
@@ -197,9 +251,15 @@ export interface FileRouteTypes {
     | '/student'
     | '/admin/AdminLayout'
     | '/admin/analytics'
+    | '/admin/categories'
+    | '/admin/certificates'
     | '/admin/courses'
+    | '/admin/enrollments'
     | '/admin/login'
     | '/admin/mentors'
+    | '/admin/payments'
+    | '/admin/reports'
+    | '/admin/reviews'
     | '/admin/sessions'
     | '/admin/settings'
     | '/admin/users'
@@ -218,9 +278,15 @@ export interface FileRouteTypes {
     | '/student'
     | '/admin/AdminLayout'
     | '/admin/analytics'
+    | '/admin/categories'
+    | '/admin/certificates'
     | '/admin/courses'
+    | '/admin/enrollments'
     | '/admin/login'
     | '/admin/mentors'
+    | '/admin/payments'
+    | '/admin/reports'
+    | '/admin/reviews'
     | '/admin/sessions'
     | '/admin/settings'
     | '/admin/users'
@@ -239,9 +305,15 @@ export interface FileRouteTypes {
     | '/student'
     | '/admin/AdminLayout'
     | '/admin/analytics'
+    | '/admin/categories'
+    | '/admin/certificates'
     | '/admin/courses'
+    | '/admin/enrollments'
     | '/admin/login'
     | '/admin/mentors'
+    | '/admin/payments'
+    | '/admin/reports'
+    | '/admin/reviews'
     | '/admin/sessions'
     | '/admin/settings'
     | '/admin/users'
@@ -261,9 +333,15 @@ export interface RootRouteChildren {
   StudentRoute: typeof StudentRoute
   AdminAdminLayoutRoute: typeof AdminAdminLayoutRoute
   AdminAnalyticsRoute: typeof AdminAnalyticsRoute
+  AdminCategoriesRoute: typeof AdminCategoriesRoute
+  AdminCertificatesRoute: typeof AdminCertificatesRoute
   AdminCoursesRoute: typeof AdminCoursesRoute
+  AdminEnrollmentsRoute: typeof AdminEnrollmentsRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminMentorsRoute: typeof AdminMentorsRoute
+  AdminPaymentsRoute: typeof AdminPaymentsRoute
+  AdminReportsRoute: typeof AdminReportsRoute
+  AdminReviewsRoute: typeof AdminReviewsRoute
   AdminSessionsRoute: typeof AdminSessionsRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
   AdminUsersRoute: typeof AdminUsersRoute
@@ -377,6 +455,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminSessionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/reviews': {
+      id: '/admin/reviews'
+      path: '/admin/reviews'
+      fullPath: '/admin/reviews'
+      preLoaderRoute: typeof AdminReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/reports': {
+      id: '/admin/reports'
+      path: '/admin/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AdminReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/payments': {
+      id: '/admin/payments'
+      path: '/admin/payments'
+      fullPath: '/admin/payments'
+      preLoaderRoute: typeof AdminPaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/mentors': {
       id: '/admin/mentors'
       path: '/admin/mentors'
@@ -391,11 +490,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/enrollments': {
+      id: '/admin/enrollments'
+      path: '/admin/enrollments'
+      fullPath: '/admin/enrollments'
+      preLoaderRoute: typeof AdminEnrollmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/courses': {
       id: '/admin/courses'
       path: '/admin/courses'
       fullPath: '/admin/courses'
       preLoaderRoute: typeof AdminCoursesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/certificates': {
+      id: '/admin/certificates'
+      path: '/admin/certificates'
+      fullPath: '/admin/certificates'
+      preLoaderRoute: typeof AdminCertificatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/categories': {
+      id: '/admin/categories'
+      path: '/admin/categories'
+      fullPath: '/admin/categories'
+      preLoaderRoute: typeof AdminCategoriesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/analytics': {
@@ -421,9 +541,15 @@ const rootRouteChildren: RootRouteChildren = {
   StudentRoute: StudentRoute,
   AdminAdminLayoutRoute: AdminAdminLayoutRoute,
   AdminAnalyticsRoute: AdminAnalyticsRoute,
+  AdminCategoriesRoute: AdminCategoriesRoute,
+  AdminCertificatesRoute: AdminCertificatesRoute,
   AdminCoursesRoute: AdminCoursesRoute,
+  AdminEnrollmentsRoute: AdminEnrollmentsRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminMentorsRoute: AdminMentorsRoute,
+  AdminPaymentsRoute: AdminPaymentsRoute,
+  AdminReportsRoute: AdminReportsRoute,
+  AdminReviewsRoute: AdminReviewsRoute,
   AdminSessionsRoute: AdminSessionsRoute,
   AdminSettingsRoute: AdminSettingsRoute,
   AdminUsersRoute: AdminUsersRoute,
