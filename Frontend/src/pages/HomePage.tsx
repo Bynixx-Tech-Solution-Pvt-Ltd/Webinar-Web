@@ -49,8 +49,6 @@ const navLinks = [
   { label: "Features", href: "#features" },
   { label: "How it works", href: "#how" },
   { label: "Roles", href: "#roles" },
-  { label: "Mentor", to: "/mentor" },
-  { label: "Admin", to: "/admin" },
 ];
 
 export function HomePage() {
