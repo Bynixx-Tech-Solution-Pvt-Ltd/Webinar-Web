@@ -27,7 +27,7 @@ export function Shell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
     <div className="flex min-h-screen bg-background">
-      <aside className="hidden lg:flex w-64 shrink-0 flex-col bg-sidebar text-sidebar-foreground sticky top-0 h-screen">
+      <aside className="dark hidden lg:flex w-64 shrink-0 flex-col bg-sidebar text-sidebar-foreground sticky top-0 h-screen border-r border-sidebar-border/30">
         <div className="px-6 py-5 flex items-center gap-3">
           <div className="grid h-10 w-10 place-items-center rounded-xl bg-sidebar-active text-white font-black">B</div>
           <div>
@@ -185,3 +185,9 @@ export function Btn({ children, variant = "primary", className = "" }: { childre
   };
   return <button className={`text-sm font-semibold px-3.5 py-2 rounded-lg transition ${v[variant]} ${className}`}>{children}</button>;
 }
+
+// Tailwind Safelist for dynamic chip and card classes:
+// bg-chip-violet bg-chip-blue bg-chip-green bg-chip-amber bg-chip-red bg-chip-pink bg-chip-orange
+// bg-chip-violet/15 bg-chip-blue/15 bg-chip-green/15 bg-chip-amber/15 bg-chip-red/15 bg-chip-pink/15 bg-chip-orange/15
+// text-chip-violet text-chip-blue text-chip-green text-chip-amber text-chip-red text-chip-pink text-chip-orange
+// from-chip-violet/30 to-chip-violet/10 from-chip-green/30 to-chip-green/10 from-chip-blue/30 to-chip-blue/10 from-chip-orange/30 to-chip-orange/10 from-chip-pink/30 to-chip-pink/10 from-chip-amber/30 to-chip-amber/10
