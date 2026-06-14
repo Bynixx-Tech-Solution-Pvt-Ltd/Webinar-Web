@@ -15,12 +15,9 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as StudentIndexRouteImport } from './routes/student/index'
 import { Route as MentorIndexRouteImport } from './routes/mentor/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
-<<<<<<< HEAD
 import { Route as StudentCoursesRouteImport } from './routes/student/courses'
 import { Route as MentorTestsRouteImport } from './routes/mentor/tests'
-=======
 import { Route as MentorTaskReviewsRouteImport } from './routes/mentor/task-reviews'
->>>>>>> 664f1fe6923c3824319432f4b82c5bd63c7305fa
 import { Route as MentorStudentsRouteImport } from './routes/mentor/students'
 import { Route as MentorProjectsRouteImport } from './routes/mentor/projects'
 import { Route as MentorProfileSettingsRouteImport } from './routes/mentor/profile-settings'
@@ -76,7 +73,6 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/admin/',
   getParentRoute: () => rootRouteImport,
 } as any)
-<<<<<<< HEAD
 const StudentCoursesRoute = StudentCoursesRouteImport.update({
   id: '/courses',
   path: '/courses',
@@ -85,11 +81,9 @@ const StudentCoursesRoute = StudentCoursesRouteImport.update({
 const MentorTestsRoute = MentorTestsRouteImport.update({
   id: '/mentor/tests',
   path: '/mentor/tests',
-=======
 const MentorTaskReviewsRoute = MentorTaskReviewsRouteImport.update({
   id: '/mentor/task-reviews',
   path: '/mentor/task-reviews',
->>>>>>> 664f1fe6923c3824319432f4b82c5bd63c7305fa
   getParentRoute: () => rootRouteImport,
 } as any)
 const MentorStudentsRoute = MentorStudentsRouteImport.update({
@@ -241,12 +235,9 @@ export interface FileRoutesByFullPath {
   '/mentor/profile-settings': typeof MentorProfileSettingsRoute
   '/mentor/projects': typeof MentorProjectsRoute
   '/mentor/students': typeof MentorStudentsRoute
-<<<<<<< HEAD
   '/mentor/tests': typeof MentorTestsRoute
   '/student/courses': typeof StudentCoursesRoute
-=======
   '/mentor/task-reviews': typeof MentorTaskReviewsRoute
->>>>>>> 664f1fe6923c3824319432f4b82c5bd63c7305fa
   '/admin/': typeof AdminIndexRoute
   '/mentor/': typeof MentorIndexRoute
   '/student/': typeof StudentIndexRoute
@@ -278,12 +269,9 @@ export interface FileRoutesByTo {
   '/mentor/profile-settings': typeof MentorProfileSettingsRoute
   '/mentor/projects': typeof MentorProjectsRoute
   '/mentor/students': typeof MentorStudentsRoute
-<<<<<<< HEAD
   '/mentor/tests': typeof MentorTestsRoute
   '/student/courses': typeof StudentCoursesRoute
-=======
   '/mentor/task-reviews': typeof MentorTaskReviewsRoute
->>>>>>> 664f1fe6923c3824319432f4b82c5bd63c7305fa
   '/admin': typeof AdminIndexRoute
   '/mentor': typeof MentorIndexRoute
   '/student': typeof StudentIndexRoute
@@ -317,12 +305,9 @@ export interface FileRoutesById {
   '/mentor/profile-settings': typeof MentorProfileSettingsRoute
   '/mentor/projects': typeof MentorProjectsRoute
   '/mentor/students': typeof MentorStudentsRoute
-<<<<<<< HEAD
   '/mentor/tests': typeof MentorTestsRoute
   '/student/courses': typeof StudentCoursesRoute
-=======
   '/mentor/task-reviews': typeof MentorTaskReviewsRoute
->>>>>>> 664f1fe6923c3824319432f4b82c5bd63c7305fa
   '/admin/': typeof AdminIndexRoute
   '/mentor/': typeof MentorIndexRoute
   '/student/': typeof StudentIndexRoute
@@ -357,12 +342,9 @@ export interface FileRouteTypes {
     | '/mentor/profile-settings'
     | '/mentor/projects'
     | '/mentor/students'
-<<<<<<< HEAD
     | '/mentor/tests'
     | '/student/courses'
-=======
     | '/mentor/task-reviews'
->>>>>>> 664f1fe6923c3824319432f4b82c5bd63c7305fa
     | '/admin/'
     | '/mentor/'
     | '/student/'
@@ -394,12 +376,9 @@ export interface FileRouteTypes {
     | '/mentor/profile-settings'
     | '/mentor/projects'
     | '/mentor/students'
-<<<<<<< HEAD
     | '/mentor/tests'
     | '/student/courses'
-=======
     | '/mentor/task-reviews'
->>>>>>> 664f1fe6923c3824319432f4b82c5bd63c7305fa
     | '/admin'
     | '/mentor'
     | '/student'
@@ -432,12 +411,9 @@ export interface FileRouteTypes {
     | '/mentor/profile-settings'
     | '/mentor/projects'
     | '/mentor/students'
-<<<<<<< HEAD
     | '/mentor/tests'
     | '/student/courses'
-=======
     | '/mentor/task-reviews'
->>>>>>> 664f1fe6923c3824319432f4b82c5bd63c7305fa
     | '/admin/'
     | '/mentor/'
     | '/student/'
@@ -520,7 +496,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-<<<<<<< HEAD
     '/student/courses': {
       id: '/student/courses'
       path: '/courses'
@@ -533,13 +508,11 @@ declare module '@tanstack/react-router' {
       path: '/mentor/tests'
       fullPath: '/mentor/tests'
       preLoaderRoute: typeof MentorTestsRouteImport
-=======
     '/mentor/task-reviews': {
       id: '/mentor/task-reviews'
       path: '/mentor/task-reviews'
       fullPath: '/mentor/task-reviews'
       preLoaderRoute: typeof MentorTaskReviewsRouteImport
->>>>>>> 664f1fe6923c3824319432f4b82c5bd63c7305fa
       parentRoute: typeof rootRouteImport
     }
     '/mentor/students': {
