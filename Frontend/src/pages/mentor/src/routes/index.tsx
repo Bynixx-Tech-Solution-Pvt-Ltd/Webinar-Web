@@ -1,8 +1,3 @@
-/**
- * MENTOR DASHBOARD HOME ROUTE (index.tsx)
- * This is the "/mentor/" route - the mentor home/dashboard page.
- */
-
 import { createFileRoute } from "@tanstack/react-router";
 import {
   Users, ClipboardCheck, Video, FileText, FolderKanban,
@@ -16,7 +11,7 @@ import {
 } from "recharts";
 import { Shell, Card, PageHeader, Chip, Avatar } from "@/components/mentor/Shell";
 
-export const Route = createFileRoute("/mentor/")({
+export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Bynixx Mentor Portal — Dashboard" },
@@ -91,29 +86,6 @@ const quickActions = [
   { icon: BarChart, label: "View Reports" },
   { icon: BadgeCheck, label: "Approve Certificates" },
 ];
-
-function IconBtn({ children }: { children: React.ReactNode }) {
-  return <button className="grid h-7 w-7 place-items-center rounded-md hover:bg-muted text-muted-foreground">{children}</button>;
-}
-
-function Mini({ label, value, delta, up }: { label: string; value: string; delta: string; up?: boolean }) {
-  return (
-    <div>
-      <div className="text-[10px] text-muted-foreground">{label}</div>
-      <div className="text-sm font-bold mt-1">{value}</div>
-      <div className={`text-[10px] mt-1 ${up ? "text-chip-green" : "text-chip-red"}`}>{delta}</div>
-    </div>
-  );
-}
-
-function Legend({ color, label }: { color: string; label: string }) {
-  return (
-    <div className="flex items-center gap-1.5">
-      <span className="h-2 w-2 rounded-full" style={{ background: color }} />
-      <span>{label}</span>
-    </div>
-  );
-}
 
 function MentorDashboard() {
   return (
@@ -326,5 +298,28 @@ function MentorDashboard() {
         </div>
       </div>
     </Shell>
+  );
+}
+
+function IconBtn({ children }: { children: React.ReactNode }) {
+  return <button className="grid h-7 w-7 place-items-center rounded-md hover:bg-muted">{children}</button>;
+}
+
+function Mini({ label, value, delta, up }: { label: string; value: string; delta: string; up?: boolean }) {
+  return (
+    <div className="rounded-xl border border-border p-3">
+      <div className="text-[11px] text-muted-foreground">{label}</div>
+      <div className="text-base font-bold mt-1">{value}</div>
+      <div className={`text-[10px] mt-0.5 ${up ? "text-chip-green" : "text-chip-red"}`}>{delta}</div>
+    </div>
+  );
+}
+
+function Legend({ color, label }: { color: string; label: string }) {
+  return (
+    <div className="flex items-center gap-1.5 text-muted-foreground">
+      <span className="h-2 w-4 rounded-full" style={{ background: color }} />
+      {label}
+    </div>
   );
 }

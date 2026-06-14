@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Shell, Card, PageHeader, Chip, Avatar, Btn } from "@/components/mentor/Shell";
 import { Search, Filter, Plus, Eye, MessageSquare, MoreVertical, Users, TrendingUp, AlertTriangle, CheckCircle2 } from "lucide-react";
 
-export const Route = createFileRoute("/mentor/students")({
+export const Route = createFileRoute("/students")({
   head: () => ({
     meta: [
       { title: "Students — Bynixx Mentor Portal" },
