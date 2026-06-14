@@ -3,6 +3,15 @@
  * Remove when connecting to real backend API
  */
 
+export type MockUser = {
+  id: string;
+  email: string;
+  password: string;
+  name: string;
+  role: "student" | "mentor" | "admin";
+  avatar: string;
+};
+
 export const MOCK_USERS = {
   // Student users
   students: [
@@ -39,7 +48,13 @@ export const MOCK_USERS = {
   ],
 };
 
-export const MOCK_LOGIN = async (email: string, password: string, role?: "student" | "mentor" | "admin") => {
+export const MOCK_LOGIN = async (
+  email: string,
+  password: string,
+  role?: "student" | "mentor" | "admin"
+): Promise
+  | { success: true; user: MockUser; token: string }
+  | { success: false; error: string } => {
   // Simulate API delay
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
