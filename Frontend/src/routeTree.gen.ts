@@ -12,8 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as StudentRouteImport } from './routes/student'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StudentIndexRouteImport } from './routes/student/index'
 import { Route as MentorIndexRouteImport } from './routes/mentor/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as StudentCoursesRouteImport } from './routes/student/courses'
 import { Route as MentorTestsRouteImport } from './routes/mentor/tests'
 import { Route as MentorStudentsRouteImport } from './routes/mentor/students'
 import { Route as MentorReviewsRouteImport } from './routes/mentor/reviews'
@@ -44,6 +46,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudentIndexRoute = StudentIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => StudentRoute,
+} as any)
 const MentorIndexRoute = MentorIndexRouteImport.update({
   id: '/mentor/',
   path: '/mentor/',
@@ -53,6 +60,11 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/admin/',
   path: '/admin/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const StudentCoursesRoute = StudentCoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => StudentRoute,
 } as any)
 const MentorTestsRoute = MentorTestsRouteImport.update({
   id: '/mentor/tests',
@@ -128,7 +140,7 @@ const AdminAdminLayoutRoute = AdminAdminLayoutRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
-  '/student': typeof StudentRoute
+  '/student': typeof StudentRouteWithChildren
   '/admin/AdminLayout': typeof AdminAdminLayoutRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/courses': typeof AdminCoursesRoute
@@ -143,13 +155,14 @@ export interface FileRoutesByFullPath {
   '/mentor/reviews': typeof MentorReviewsRoute
   '/mentor/students': typeof MentorStudentsRoute
   '/mentor/tests': typeof MentorTestsRoute
+  '/student/courses': typeof StudentCoursesRoute
   '/admin/': typeof AdminIndexRoute
   '/mentor/': typeof MentorIndexRoute
+  '/student/': typeof StudentIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
-  '/student': typeof StudentRoute
   '/admin/AdminLayout': typeof AdminAdminLayoutRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/courses': typeof AdminCoursesRoute
@@ -164,14 +177,16 @@ export interface FileRoutesByTo {
   '/mentor/reviews': typeof MentorReviewsRoute
   '/mentor/students': typeof MentorStudentsRoute
   '/mentor/tests': typeof MentorTestsRoute
+  '/student/courses': typeof StudentCoursesRoute
   '/admin': typeof AdminIndexRoute
   '/mentor': typeof MentorIndexRoute
+  '/student': typeof StudentIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
-  '/student': typeof StudentRoute
+  '/student': typeof StudentRouteWithChildren
   '/admin/AdminLayout': typeof AdminAdminLayoutRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/courses': typeof AdminCoursesRoute
@@ -186,8 +201,10 @@ export interface FileRoutesById {
   '/mentor/reviews': typeof MentorReviewsRoute
   '/mentor/students': typeof MentorStudentsRoute
   '/mentor/tests': typeof MentorTestsRoute
+  '/student/courses': typeof StudentCoursesRoute
   '/admin/': typeof AdminIndexRoute
   '/mentor/': typeof MentorIndexRoute
+  '/student/': typeof StudentIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -209,13 +226,14 @@ export interface FileRouteTypes {
     | '/mentor/reviews'
     | '/mentor/students'
     | '/mentor/tests'
+    | '/student/courses'
     | '/admin/'
     | '/mentor/'
+    | '/student/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/login'
-    | '/student'
     | '/admin/AdminLayout'
     | '/admin/analytics'
     | '/admin/courses'
@@ -230,8 +248,10 @@ export interface FileRouteTypes {
     | '/mentor/reviews'
     | '/mentor/students'
     | '/mentor/tests'
+    | '/student/courses'
     | '/admin'
     | '/mentor'
+    | '/student'
   id:
     | '__root__'
     | '/'
@@ -251,14 +271,16 @@ export interface FileRouteTypes {
     | '/mentor/reviews'
     | '/mentor/students'
     | '/mentor/tests'
+    | '/student/courses'
     | '/admin/'
     | '/mentor/'
+    | '/student/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LoginRoute: typeof LoginRoute
-  StudentRoute: typeof StudentRoute
+  StudentRoute: typeof StudentRouteWithChildren
   AdminAdminLayoutRoute: typeof AdminAdminLayoutRoute
   AdminAnalyticsRoute: typeof AdminAnalyticsRoute
   AdminCoursesRoute: typeof AdminCoursesRoute
@@ -300,6 +322,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/student/': {
+      id: '/student/'
+      path: '/'
+      fullPath: '/student/'
+      preLoaderRoute: typeof StudentIndexRouteImport
+      parentRoute: typeof StudentRoute
+    }
     '/mentor/': {
       id: '/mentor/'
       path: '/mentor'
@@ -313,6 +342,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/'
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/student/courses': {
+      id: '/student/courses'
+      path: '/courses'
+      fullPath: '/student/courses'
+      preLoaderRoute: typeof StudentCoursesRouteImport
+      parentRoute: typeof StudentRoute
     }
     '/mentor/tests': {
       id: '/mentor/tests'
@@ -415,10 +451,23 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface StudentRouteChildren {
+  StudentCoursesRoute: typeof StudentCoursesRoute
+  StudentIndexRoute: typeof StudentIndexRoute
+}
+
+const StudentRouteChildren: StudentRouteChildren = {
+  StudentCoursesRoute: StudentCoursesRoute,
+  StudentIndexRoute: StudentIndexRoute,
+}
+
+const StudentRouteWithChildren =
+  StudentRoute._addFileChildren(StudentRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LoginRoute: LoginRoute,
-  StudentRoute: StudentRoute,
+  StudentRoute: StudentRouteWithChildren,
   AdminAdminLayoutRoute: AdminAdminLayoutRoute,
   AdminAnalyticsRoute: AdminAnalyticsRoute,
   AdminCoursesRoute: AdminCoursesRoute,
