@@ -14,12 +14,17 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MentorIndexRouteImport } from './routes/mentor/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
-import { Route as MentorTestsRouteImport } from './routes/mentor/tests'
+import { Route as MentorTaskReviewsRouteImport } from './routes/mentor/task-reviews'
 import { Route as MentorStudentsRouteImport } from './routes/mentor/students'
-import { Route as MentorReviewsRouteImport } from './routes/mentor/reviews'
-import { Route as MentorQueriesRouteImport } from './routes/mentor/queries'
-import { Route as MentorClassesRouteImport } from './routes/mentor/classes'
-import { Route as MentorMentorLayoutRouteImport } from './routes/mentor/MentorLayout'
+import { Route as MentorProjectsRouteImport } from './routes/mentor/projects'
+import { Route as MentorProfileSettingsRouteImport } from './routes/mentor/profile-settings'
+import { Route as MentorNotificationsRouteImport } from './routes/mentor/notifications'
+import { Route as MentorLiveSessionsRouteImport } from './routes/mentor/live-sessions'
+import { Route as MentorCoursesRouteImport } from './routes/mentor/courses'
+import { Route as MentorCommunityRouteImport } from './routes/mentor/community'
+import { Route as MentorCertificatesRouteImport } from './routes/mentor/certificates'
+import { Route as MentorAssessmentsRouteImport } from './routes/mentor/assessments'
+import { Route as MentorAnalyticsRouteImport } from './routes/mentor/analytics'
 import { Route as AdminUsersRouteImport } from './routes/admin/users'
 import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
 import { Route as AdminSessionsRouteImport } from './routes/admin/sessions'
@@ -60,9 +65,9 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/admin/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MentorTestsRoute = MentorTestsRouteImport.update({
-  id: '/mentor/tests',
-  path: '/mentor/tests',
+const MentorTaskReviewsRoute = MentorTaskReviewsRouteImport.update({
+  id: '/mentor/task-reviews',
+  path: '/mentor/task-reviews',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MentorStudentsRoute = MentorStudentsRouteImport.update({
@@ -70,24 +75,49 @@ const MentorStudentsRoute = MentorStudentsRouteImport.update({
   path: '/mentor/students',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MentorReviewsRoute = MentorReviewsRouteImport.update({
-  id: '/mentor/reviews',
-  path: '/mentor/reviews',
+const MentorProjectsRoute = MentorProjectsRouteImport.update({
+  id: '/mentor/projects',
+  path: '/mentor/projects',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MentorQueriesRoute = MentorQueriesRouteImport.update({
-  id: '/mentor/queries',
-  path: '/mentor/queries',
+const MentorProfileSettingsRoute = MentorProfileSettingsRouteImport.update({
+  id: '/mentor/profile-settings',
+  path: '/mentor/profile-settings',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MentorClassesRoute = MentorClassesRouteImport.update({
-  id: '/mentor/classes',
-  path: '/mentor/classes',
+const MentorNotificationsRoute = MentorNotificationsRouteImport.update({
+  id: '/mentor/notifications',
+  path: '/mentor/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MentorMentorLayoutRoute = MentorMentorLayoutRouteImport.update({
-  id: '/mentor/MentorLayout',
-  path: '/mentor/MentorLayout',
+const MentorLiveSessionsRoute = MentorLiveSessionsRouteImport.update({
+  id: '/mentor/live-sessions',
+  path: '/mentor/live-sessions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentorCoursesRoute = MentorCoursesRouteImport.update({
+  id: '/mentor/courses',
+  path: '/mentor/courses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentorCommunityRoute = MentorCommunityRouteImport.update({
+  id: '/mentor/community',
+  path: '/mentor/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentorCertificatesRoute = MentorCertificatesRouteImport.update({
+  id: '/mentor/certificates',
+  path: '/mentor/certificates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentorAssessmentsRoute = MentorAssessmentsRouteImport.update({
+  id: '/mentor/assessments',
+  path: '/mentor/assessments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentorAnalyticsRoute = MentorAnalyticsRouteImport.update({
+  id: '/mentor/analytics',
+  path: '/mentor/analytics',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminUsersRoute = AdminUsersRouteImport.update({
@@ -179,12 +209,17 @@ export interface FileRoutesByFullPath {
   '/admin/sessions': typeof AdminSessionsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
-  '/mentor/MentorLayout': typeof MentorMentorLayoutRoute
-  '/mentor/classes': typeof MentorClassesRoute
-  '/mentor/queries': typeof MentorQueriesRoute
-  '/mentor/reviews': typeof MentorReviewsRoute
+  '/mentor/analytics': typeof MentorAnalyticsRoute
+  '/mentor/assessments': typeof MentorAssessmentsRoute
+  '/mentor/certificates': typeof MentorCertificatesRoute
+  '/mentor/community': typeof MentorCommunityRoute
+  '/mentor/courses': typeof MentorCoursesRoute
+  '/mentor/live-sessions': typeof MentorLiveSessionsRoute
+  '/mentor/notifications': typeof MentorNotificationsRoute
+  '/mentor/profile-settings': typeof MentorProfileSettingsRoute
+  '/mentor/projects': typeof MentorProjectsRoute
   '/mentor/students': typeof MentorStudentsRoute
-  '/mentor/tests': typeof MentorTestsRoute
+  '/mentor/task-reviews': typeof MentorTaskReviewsRoute
   '/admin/': typeof AdminIndexRoute
   '/mentor/': typeof MentorIndexRoute
 }
@@ -206,12 +241,17 @@ export interface FileRoutesByTo {
   '/admin/sessions': typeof AdminSessionsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
-  '/mentor/MentorLayout': typeof MentorMentorLayoutRoute
-  '/mentor/classes': typeof MentorClassesRoute
-  '/mentor/queries': typeof MentorQueriesRoute
-  '/mentor/reviews': typeof MentorReviewsRoute
+  '/mentor/analytics': typeof MentorAnalyticsRoute
+  '/mentor/assessments': typeof MentorAssessmentsRoute
+  '/mentor/certificates': typeof MentorCertificatesRoute
+  '/mentor/community': typeof MentorCommunityRoute
+  '/mentor/courses': typeof MentorCoursesRoute
+  '/mentor/live-sessions': typeof MentorLiveSessionsRoute
+  '/mentor/notifications': typeof MentorNotificationsRoute
+  '/mentor/profile-settings': typeof MentorProfileSettingsRoute
+  '/mentor/projects': typeof MentorProjectsRoute
   '/mentor/students': typeof MentorStudentsRoute
-  '/mentor/tests': typeof MentorTestsRoute
+  '/mentor/task-reviews': typeof MentorTaskReviewsRoute
   '/admin': typeof AdminIndexRoute
   '/mentor': typeof MentorIndexRoute
 }
@@ -234,12 +274,17 @@ export interface FileRoutesById {
   '/admin/sessions': typeof AdminSessionsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/users': typeof AdminUsersRoute
-  '/mentor/MentorLayout': typeof MentorMentorLayoutRoute
-  '/mentor/classes': typeof MentorClassesRoute
-  '/mentor/queries': typeof MentorQueriesRoute
-  '/mentor/reviews': typeof MentorReviewsRoute
+  '/mentor/analytics': typeof MentorAnalyticsRoute
+  '/mentor/assessments': typeof MentorAssessmentsRoute
+  '/mentor/certificates': typeof MentorCertificatesRoute
+  '/mentor/community': typeof MentorCommunityRoute
+  '/mentor/courses': typeof MentorCoursesRoute
+  '/mentor/live-sessions': typeof MentorLiveSessionsRoute
+  '/mentor/notifications': typeof MentorNotificationsRoute
+  '/mentor/profile-settings': typeof MentorProfileSettingsRoute
+  '/mentor/projects': typeof MentorProjectsRoute
   '/mentor/students': typeof MentorStudentsRoute
-  '/mentor/tests': typeof MentorTestsRoute
+  '/mentor/task-reviews': typeof MentorTaskReviewsRoute
   '/admin/': typeof AdminIndexRoute
   '/mentor/': typeof MentorIndexRoute
 }
@@ -263,12 +308,17 @@ export interface FileRouteTypes {
     | '/admin/sessions'
     | '/admin/settings'
     | '/admin/users'
-    | '/mentor/MentorLayout'
-    | '/mentor/classes'
-    | '/mentor/queries'
-    | '/mentor/reviews'
+    | '/mentor/analytics'
+    | '/mentor/assessments'
+    | '/mentor/certificates'
+    | '/mentor/community'
+    | '/mentor/courses'
+    | '/mentor/live-sessions'
+    | '/mentor/notifications'
+    | '/mentor/profile-settings'
+    | '/mentor/projects'
     | '/mentor/students'
-    | '/mentor/tests'
+    | '/mentor/task-reviews'
     | '/admin/'
     | '/mentor/'
   fileRoutesByTo: FileRoutesByTo
@@ -290,12 +340,17 @@ export interface FileRouteTypes {
     | '/admin/sessions'
     | '/admin/settings'
     | '/admin/users'
-    | '/mentor/MentorLayout'
-    | '/mentor/classes'
-    | '/mentor/queries'
-    | '/mentor/reviews'
+    | '/mentor/analytics'
+    | '/mentor/assessments'
+    | '/mentor/certificates'
+    | '/mentor/community'
+    | '/mentor/courses'
+    | '/mentor/live-sessions'
+    | '/mentor/notifications'
+    | '/mentor/profile-settings'
+    | '/mentor/projects'
     | '/mentor/students'
-    | '/mentor/tests'
+    | '/mentor/task-reviews'
     | '/admin'
     | '/mentor'
   id:
@@ -317,12 +372,17 @@ export interface FileRouteTypes {
     | '/admin/sessions'
     | '/admin/settings'
     | '/admin/users'
-    | '/mentor/MentorLayout'
-    | '/mentor/classes'
-    | '/mentor/queries'
-    | '/mentor/reviews'
+    | '/mentor/analytics'
+    | '/mentor/assessments'
+    | '/mentor/certificates'
+    | '/mentor/community'
+    | '/mentor/courses'
+    | '/mentor/live-sessions'
+    | '/mentor/notifications'
+    | '/mentor/profile-settings'
+    | '/mentor/projects'
     | '/mentor/students'
-    | '/mentor/tests'
+    | '/mentor/task-reviews'
     | '/admin/'
     | '/mentor/'
   fileRoutesById: FileRoutesById
@@ -345,12 +405,17 @@ export interface RootRouteChildren {
   AdminSessionsRoute: typeof AdminSessionsRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
   AdminUsersRoute: typeof AdminUsersRoute
-  MentorMentorLayoutRoute: typeof MentorMentorLayoutRoute
-  MentorClassesRoute: typeof MentorClassesRoute
-  MentorQueriesRoute: typeof MentorQueriesRoute
-  MentorReviewsRoute: typeof MentorReviewsRoute
+  MentorAnalyticsRoute: typeof MentorAnalyticsRoute
+  MentorAssessmentsRoute: typeof MentorAssessmentsRoute
+  MentorCertificatesRoute: typeof MentorCertificatesRoute
+  MentorCommunityRoute: typeof MentorCommunityRoute
+  MentorCoursesRoute: typeof MentorCoursesRoute
+  MentorLiveSessionsRoute: typeof MentorLiveSessionsRoute
+  MentorNotificationsRoute: typeof MentorNotificationsRoute
+  MentorProfileSettingsRoute: typeof MentorProfileSettingsRoute
+  MentorProjectsRoute: typeof MentorProjectsRoute
   MentorStudentsRoute: typeof MentorStudentsRoute
-  MentorTestsRoute: typeof MentorTestsRoute
+  MentorTaskReviewsRoute: typeof MentorTaskReviewsRoute
   AdminIndexRoute: typeof AdminIndexRoute
   MentorIndexRoute: typeof MentorIndexRoute
 }
@@ -392,11 +457,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/mentor/tests': {
-      id: '/mentor/tests'
-      path: '/mentor/tests'
-      fullPath: '/mentor/tests'
-      preLoaderRoute: typeof MentorTestsRouteImport
+    '/mentor/task-reviews': {
+      id: '/mentor/task-reviews'
+      path: '/mentor/task-reviews'
+      fullPath: '/mentor/task-reviews'
+      preLoaderRoute: typeof MentorTaskReviewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mentor/students': {
@@ -406,32 +471,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MentorStudentsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/mentor/reviews': {
-      id: '/mentor/reviews'
-      path: '/mentor/reviews'
-      fullPath: '/mentor/reviews'
-      preLoaderRoute: typeof MentorReviewsRouteImport
+    '/mentor/projects': {
+      id: '/mentor/projects'
+      path: '/mentor/projects'
+      fullPath: '/mentor/projects'
+      preLoaderRoute: typeof MentorProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/mentor/queries': {
-      id: '/mentor/queries'
-      path: '/mentor/queries'
-      fullPath: '/mentor/queries'
-      preLoaderRoute: typeof MentorQueriesRouteImport
+    '/mentor/profile-settings': {
+      id: '/mentor/profile-settings'
+      path: '/mentor/profile-settings'
+      fullPath: '/mentor/profile-settings'
+      preLoaderRoute: typeof MentorProfileSettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/mentor/classes': {
-      id: '/mentor/classes'
-      path: '/mentor/classes'
-      fullPath: '/mentor/classes'
-      preLoaderRoute: typeof MentorClassesRouteImport
+    '/mentor/notifications': {
+      id: '/mentor/notifications'
+      path: '/mentor/notifications'
+      fullPath: '/mentor/notifications'
+      preLoaderRoute: typeof MentorNotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/mentor/MentorLayout': {
-      id: '/mentor/MentorLayout'
-      path: '/mentor/MentorLayout'
-      fullPath: '/mentor/MentorLayout'
-      preLoaderRoute: typeof MentorMentorLayoutRouteImport
+    '/mentor/live-sessions': {
+      id: '/mentor/live-sessions'
+      path: '/mentor/live-sessions'
+      fullPath: '/mentor/live-sessions'
+      preLoaderRoute: typeof MentorLiveSessionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentor/courses': {
+      id: '/mentor/courses'
+      path: '/mentor/courses'
+      fullPath: '/mentor/courses'
+      preLoaderRoute: typeof MentorCoursesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentor/community': {
+      id: '/mentor/community'
+      path: '/mentor/community'
+      fullPath: '/mentor/community'
+      preLoaderRoute: typeof MentorCommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentor/certificates': {
+      id: '/mentor/certificates'
+      path: '/mentor/certificates'
+      fullPath: '/mentor/certificates'
+      preLoaderRoute: typeof MentorCertificatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentor/assessments': {
+      id: '/mentor/assessments'
+      path: '/mentor/assessments'
+      fullPath: '/mentor/assessments'
+      preLoaderRoute: typeof MentorAssessmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentor/analytics': {
+      id: '/mentor/analytics'
+      path: '/mentor/analytics'
+      fullPath: '/mentor/analytics'
+      preLoaderRoute: typeof MentorAnalyticsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/users': {
@@ -553,12 +653,17 @@ const rootRouteChildren: RootRouteChildren = {
   AdminSessionsRoute: AdminSessionsRoute,
   AdminSettingsRoute: AdminSettingsRoute,
   AdminUsersRoute: AdminUsersRoute,
-  MentorMentorLayoutRoute: MentorMentorLayoutRoute,
-  MentorClassesRoute: MentorClassesRoute,
-  MentorQueriesRoute: MentorQueriesRoute,
-  MentorReviewsRoute: MentorReviewsRoute,
+  MentorAnalyticsRoute: MentorAnalyticsRoute,
+  MentorAssessmentsRoute: MentorAssessmentsRoute,
+  MentorCertificatesRoute: MentorCertificatesRoute,
+  MentorCommunityRoute: MentorCommunityRoute,
+  MentorCoursesRoute: MentorCoursesRoute,
+  MentorLiveSessionsRoute: MentorLiveSessionsRoute,
+  MentorNotificationsRoute: MentorNotificationsRoute,
+  MentorProfileSettingsRoute: MentorProfileSettingsRoute,
+  MentorProjectsRoute: MentorProjectsRoute,
   MentorStudentsRoute: MentorStudentsRoute,
-  MentorTestsRoute: MentorTestsRoute,
+  MentorTaskReviewsRoute: MentorTaskReviewsRoute,
   AdminIndexRoute: AdminIndexRoute,
   MentorIndexRoute: MentorIndexRoute,
 }
