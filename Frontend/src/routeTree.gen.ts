@@ -10,13 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StudentRouteImport } from './routes/student'
+import { Route as SignupRouteImport } from './routes/signup'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as StudentIndexRouteImport } from './routes/student/index'
 import { Route as MentorIndexRouteImport } from './routes/mentor/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as StudentCoursesRouteImport } from './routes/student/courses'
-import { Route as MentorTestsRouteImport } from './routes/mentor/tests'
 import { Route as MentorTaskReviewsRouteImport } from './routes/mentor/task-reviews'
 import { Route as MentorStudentsRouteImport } from './routes/mentor/students'
 import { Route as MentorProjectsRouteImport } from './routes/mentor/projects'
@@ -46,6 +46,11 @@ import { Route as AdminAdminLayoutRouteImport } from './routes/admin/AdminLayout
 const StudentRoute = StudentRouteImport.update({
   id: '/student',
   path: '/student',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -78,9 +83,6 @@ const StudentCoursesRoute = StudentCoursesRouteImport.update({
   path: '/courses',
   getParentRoute: () => StudentRoute,
 } as any)
-const MentorTestsRoute = MentorTestsRouteImport.update({
-  id: '/mentor/tests',
-  path: '/mentor/tests',
 const MentorTaskReviewsRoute = MentorTaskReviewsRouteImport.update({
   id: '/mentor/task-reviews',
   path: '/mentor/task-reviews',
@@ -210,6 +212,7 @@ const AdminAdminLayoutRoute = AdminAdminLayoutRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
   '/student': typeof StudentRouteWithChildren
   '/admin/AdminLayout': typeof AdminAdminLayoutRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
@@ -235,9 +238,8 @@ export interface FileRoutesByFullPath {
   '/mentor/profile-settings': typeof MentorProfileSettingsRoute
   '/mentor/projects': typeof MentorProjectsRoute
   '/mentor/students': typeof MentorStudentsRoute
-  '/mentor/tests': typeof MentorTestsRoute
-  '/student/courses': typeof StudentCoursesRoute
   '/mentor/task-reviews': typeof MentorTaskReviewsRoute
+  '/student/courses': typeof StudentCoursesRoute
   '/admin/': typeof AdminIndexRoute
   '/mentor/': typeof MentorIndexRoute
   '/student/': typeof StudentIndexRoute
@@ -245,6 +247,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
   '/admin/AdminLayout': typeof AdminAdminLayoutRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/categories': typeof AdminCategoriesRoute
@@ -269,9 +272,8 @@ export interface FileRoutesByTo {
   '/mentor/profile-settings': typeof MentorProfileSettingsRoute
   '/mentor/projects': typeof MentorProjectsRoute
   '/mentor/students': typeof MentorStudentsRoute
-  '/mentor/tests': typeof MentorTestsRoute
-  '/student/courses': typeof StudentCoursesRoute
   '/mentor/task-reviews': typeof MentorTaskReviewsRoute
+  '/student/courses': typeof StudentCoursesRoute
   '/admin': typeof AdminIndexRoute
   '/mentor': typeof MentorIndexRoute
   '/student': typeof StudentIndexRoute
@@ -280,6 +282,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
   '/student': typeof StudentRouteWithChildren
   '/admin/AdminLayout': typeof AdminAdminLayoutRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
@@ -305,9 +308,8 @@ export interface FileRoutesById {
   '/mentor/profile-settings': typeof MentorProfileSettingsRoute
   '/mentor/projects': typeof MentorProjectsRoute
   '/mentor/students': typeof MentorStudentsRoute
-  '/mentor/tests': typeof MentorTestsRoute
-  '/student/courses': typeof StudentCoursesRoute
   '/mentor/task-reviews': typeof MentorTaskReviewsRoute
+  '/student/courses': typeof StudentCoursesRoute
   '/admin/': typeof AdminIndexRoute
   '/mentor/': typeof MentorIndexRoute
   '/student/': typeof StudentIndexRoute
@@ -317,6 +319,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/login'
+    | '/signup'
     | '/student'
     | '/admin/AdminLayout'
     | '/admin/analytics'
@@ -342,9 +345,8 @@ export interface FileRouteTypes {
     | '/mentor/profile-settings'
     | '/mentor/projects'
     | '/mentor/students'
-    | '/mentor/tests'
-    | '/student/courses'
     | '/mentor/task-reviews'
+    | '/student/courses'
     | '/admin/'
     | '/mentor/'
     | '/student/'
@@ -352,6 +354,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/login'
+    | '/signup'
     | '/admin/AdminLayout'
     | '/admin/analytics'
     | '/admin/categories'
@@ -376,9 +379,8 @@ export interface FileRouteTypes {
     | '/mentor/profile-settings'
     | '/mentor/projects'
     | '/mentor/students'
-    | '/mentor/tests'
-    | '/student/courses'
     | '/mentor/task-reviews'
+    | '/student/courses'
     | '/admin'
     | '/mentor'
     | '/student'
@@ -386,6 +388,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/login'
+    | '/signup'
     | '/student'
     | '/admin/AdminLayout'
     | '/admin/analytics'
@@ -411,9 +414,8 @@ export interface FileRouteTypes {
     | '/mentor/profile-settings'
     | '/mentor/projects'
     | '/mentor/students'
-    | '/mentor/tests'
-    | '/student/courses'
     | '/mentor/task-reviews'
+    | '/student/courses'
     | '/admin/'
     | '/mentor/'
     | '/student/'
@@ -422,6 +424,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LoginRoute: typeof LoginRoute
+  SignupRoute: typeof SignupRoute
   StudentRoute: typeof StudentRouteWithChildren
   AdminAdminLayoutRoute: typeof AdminAdminLayoutRoute
   AdminAnalyticsRoute: typeof AdminAnalyticsRoute
@@ -459,6 +462,13 @@ declare module '@tanstack/react-router' {
       path: '/student'
       fullPath: '/student'
       preLoaderRoute: typeof StudentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -503,11 +513,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudentCoursesRouteImport
       parentRoute: typeof StudentRoute
     }
-    '/mentor/tests': {
-      id: '/mentor/tests'
-      path: '/mentor/tests'
-      fullPath: '/mentor/tests'
-      preLoaderRoute: typeof MentorTestsRouteImport
     '/mentor/task-reviews': {
       id: '/mentor/task-reviews'
       path: '/mentor/task-reviews'
@@ -702,6 +707,7 @@ const StudentRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LoginRoute: LoginRoute,
+  SignupRoute: SignupRoute,
   StudentRoute: StudentRouteWithChildren,
   AdminAdminLayoutRoute: AdminAdminLayoutRoute,
   AdminAnalyticsRoute: AdminAnalyticsRoute,
