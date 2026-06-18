@@ -16,7 +16,19 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as StudentIndexRouteImport } from './routes/student/index'
 import { Route as MentorIndexRouteImport } from './routes/mentor/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as StudentUpgradeRouteImport } from './routes/student/upgrade'
+import { Route as StudentTasksRouteImport } from './routes/student/tasks'
+import { Route as StudentSettingsRouteImport } from './routes/student/settings'
+import { Route as StudentSessionsRouteImport } from './routes/student/sessions'
+import { Route as StudentRoadmapRouteImport } from './routes/student/roadmap'
+import { Route as StudentProjectsRouteImport } from './routes/student/projects'
+import { Route as StudentNotificationsRouteImport } from './routes/student/notifications'
+import { Route as StudentFeedbackRouteImport } from './routes/student/feedback'
 import { Route as StudentCoursesRouteImport } from './routes/student/courses'
+import { Route as StudentContentRouteImport } from './routes/student/content'
+import { Route as StudentCommunityRouteImport } from './routes/student/community'
+import { Route as StudentCertificatesRouteImport } from './routes/student/certificates'
+import { Route as StudentAssessmentsRouteImport } from './routes/student/assessments'
 import { Route as MentorTaskReviewsRouteImport } from './routes/mentor/task-reviews'
 import { Route as MentorStudentsRouteImport } from './routes/mentor/students'
 import { Route as MentorProjectsRouteImport } from './routes/mentor/projects'
@@ -78,9 +90,69 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/admin/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudentUpgradeRoute = StudentUpgradeRouteImport.update({
+  id: '/upgrade',
+  path: '/upgrade',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentTasksRoute = StudentTasksRouteImport.update({
+  id: '/tasks',
+  path: '/tasks',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentSettingsRoute = StudentSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentSessionsRoute = StudentSessionsRouteImport.update({
+  id: '/sessions',
+  path: '/sessions',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentRoadmapRoute = StudentRoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentProjectsRoute = StudentProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentNotificationsRoute = StudentNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentFeedbackRoute = StudentFeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
+  getParentRoute: () => StudentRoute,
+} as any)
 const StudentCoursesRoute = StudentCoursesRouteImport.update({
   id: '/courses',
   path: '/courses',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentContentRoute = StudentContentRouteImport.update({
+  id: '/content',
+  path: '/content',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentCommunityRoute = StudentCommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentCertificatesRoute = StudentCertificatesRouteImport.update({
+  id: '/certificates',
+  path: '/certificates',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentAssessmentsRoute = StudentAssessmentsRouteImport.update({
+  id: '/assessments',
+  path: '/assessments',
   getParentRoute: () => StudentRoute,
 } as any)
 const MentorTaskReviewsRoute = MentorTaskReviewsRouteImport.update({
@@ -239,7 +311,19 @@ export interface FileRoutesByFullPath {
   '/mentor/projects': typeof MentorProjectsRoute
   '/mentor/students': typeof MentorStudentsRoute
   '/mentor/task-reviews': typeof MentorTaskReviewsRoute
+  '/student/assessments': typeof StudentAssessmentsRoute
+  '/student/certificates': typeof StudentCertificatesRoute
+  '/student/community': typeof StudentCommunityRoute
+  '/student/content': typeof StudentContentRoute
   '/student/courses': typeof StudentCoursesRoute
+  '/student/feedback': typeof StudentFeedbackRoute
+  '/student/notifications': typeof StudentNotificationsRoute
+  '/student/projects': typeof StudentProjectsRoute
+  '/student/roadmap': typeof StudentRoadmapRoute
+  '/student/sessions': typeof StudentSessionsRoute
+  '/student/settings': typeof StudentSettingsRoute
+  '/student/tasks': typeof StudentTasksRoute
+  '/student/upgrade': typeof StudentUpgradeRoute
   '/admin/': typeof AdminIndexRoute
   '/mentor/': typeof MentorIndexRoute
   '/student/': typeof StudentIndexRoute
@@ -273,7 +357,19 @@ export interface FileRoutesByTo {
   '/mentor/projects': typeof MentorProjectsRoute
   '/mentor/students': typeof MentorStudentsRoute
   '/mentor/task-reviews': typeof MentorTaskReviewsRoute
+  '/student/assessments': typeof StudentAssessmentsRoute
+  '/student/certificates': typeof StudentCertificatesRoute
+  '/student/community': typeof StudentCommunityRoute
+  '/student/content': typeof StudentContentRoute
   '/student/courses': typeof StudentCoursesRoute
+  '/student/feedback': typeof StudentFeedbackRoute
+  '/student/notifications': typeof StudentNotificationsRoute
+  '/student/projects': typeof StudentProjectsRoute
+  '/student/roadmap': typeof StudentRoadmapRoute
+  '/student/sessions': typeof StudentSessionsRoute
+  '/student/settings': typeof StudentSettingsRoute
+  '/student/tasks': typeof StudentTasksRoute
+  '/student/upgrade': typeof StudentUpgradeRoute
   '/admin': typeof AdminIndexRoute
   '/mentor': typeof MentorIndexRoute
   '/student': typeof StudentIndexRoute
@@ -309,7 +405,19 @@ export interface FileRoutesById {
   '/mentor/projects': typeof MentorProjectsRoute
   '/mentor/students': typeof MentorStudentsRoute
   '/mentor/task-reviews': typeof MentorTaskReviewsRoute
+  '/student/assessments': typeof StudentAssessmentsRoute
+  '/student/certificates': typeof StudentCertificatesRoute
+  '/student/community': typeof StudentCommunityRoute
+  '/student/content': typeof StudentContentRoute
   '/student/courses': typeof StudentCoursesRoute
+  '/student/feedback': typeof StudentFeedbackRoute
+  '/student/notifications': typeof StudentNotificationsRoute
+  '/student/projects': typeof StudentProjectsRoute
+  '/student/roadmap': typeof StudentRoadmapRoute
+  '/student/sessions': typeof StudentSessionsRoute
+  '/student/settings': typeof StudentSettingsRoute
+  '/student/tasks': typeof StudentTasksRoute
+  '/student/upgrade': typeof StudentUpgradeRoute
   '/admin/': typeof AdminIndexRoute
   '/mentor/': typeof MentorIndexRoute
   '/student/': typeof StudentIndexRoute
@@ -346,7 +454,19 @@ export interface FileRouteTypes {
     | '/mentor/projects'
     | '/mentor/students'
     | '/mentor/task-reviews'
+    | '/student/assessments'
+    | '/student/certificates'
+    | '/student/community'
+    | '/student/content'
     | '/student/courses'
+    | '/student/feedback'
+    | '/student/notifications'
+    | '/student/projects'
+    | '/student/roadmap'
+    | '/student/sessions'
+    | '/student/settings'
+    | '/student/tasks'
+    | '/student/upgrade'
     | '/admin/'
     | '/mentor/'
     | '/student/'
@@ -380,7 +500,19 @@ export interface FileRouteTypes {
     | '/mentor/projects'
     | '/mentor/students'
     | '/mentor/task-reviews'
+    | '/student/assessments'
+    | '/student/certificates'
+    | '/student/community'
+    | '/student/content'
     | '/student/courses'
+    | '/student/feedback'
+    | '/student/notifications'
+    | '/student/projects'
+    | '/student/roadmap'
+    | '/student/sessions'
+    | '/student/settings'
+    | '/student/tasks'
+    | '/student/upgrade'
     | '/admin'
     | '/mentor'
     | '/student'
@@ -415,7 +547,19 @@ export interface FileRouteTypes {
     | '/mentor/projects'
     | '/mentor/students'
     | '/mentor/task-reviews'
+    | '/student/assessments'
+    | '/student/certificates'
+    | '/student/community'
+    | '/student/content'
     | '/student/courses'
+    | '/student/feedback'
+    | '/student/notifications'
+    | '/student/projects'
+    | '/student/roadmap'
+    | '/student/sessions'
+    | '/student/settings'
+    | '/student/tasks'
+    | '/student/upgrade'
     | '/admin/'
     | '/mentor/'
     | '/student/'
@@ -506,11 +650,95 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/student/upgrade': {
+      id: '/student/upgrade'
+      path: '/upgrade'
+      fullPath: '/student/upgrade'
+      preLoaderRoute: typeof StudentUpgradeRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/tasks': {
+      id: '/student/tasks'
+      path: '/tasks'
+      fullPath: '/student/tasks'
+      preLoaderRoute: typeof StudentTasksRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/settings': {
+      id: '/student/settings'
+      path: '/settings'
+      fullPath: '/student/settings'
+      preLoaderRoute: typeof StudentSettingsRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/sessions': {
+      id: '/student/sessions'
+      path: '/sessions'
+      fullPath: '/student/sessions'
+      preLoaderRoute: typeof StudentSessionsRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/roadmap': {
+      id: '/student/roadmap'
+      path: '/roadmap'
+      fullPath: '/student/roadmap'
+      preLoaderRoute: typeof StudentRoadmapRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/projects': {
+      id: '/student/projects'
+      path: '/projects'
+      fullPath: '/student/projects'
+      preLoaderRoute: typeof StudentProjectsRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/notifications': {
+      id: '/student/notifications'
+      path: '/notifications'
+      fullPath: '/student/notifications'
+      preLoaderRoute: typeof StudentNotificationsRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/feedback': {
+      id: '/student/feedback'
+      path: '/feedback'
+      fullPath: '/student/feedback'
+      preLoaderRoute: typeof StudentFeedbackRouteImport
+      parentRoute: typeof StudentRoute
+    }
     '/student/courses': {
       id: '/student/courses'
       path: '/courses'
       fullPath: '/student/courses'
       preLoaderRoute: typeof StudentCoursesRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/content': {
+      id: '/student/content'
+      path: '/content'
+      fullPath: '/student/content'
+      preLoaderRoute: typeof StudentContentRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/community': {
+      id: '/student/community'
+      path: '/community'
+      fullPath: '/student/community'
+      preLoaderRoute: typeof StudentCommunityRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/certificates': {
+      id: '/student/certificates'
+      path: '/certificates'
+      fullPath: '/student/certificates'
+      preLoaderRoute: typeof StudentCertificatesRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/student/assessments': {
+      id: '/student/assessments'
+      path: '/assessments'
+      fullPath: '/student/assessments'
+      preLoaderRoute: typeof StudentAssessmentsRouteImport
       parentRoute: typeof StudentRoute
     }
     '/mentor/task-reviews': {
@@ -692,12 +920,36 @@ declare module '@tanstack/react-router' {
 }
 
 interface StudentRouteChildren {
+  StudentAssessmentsRoute: typeof StudentAssessmentsRoute
+  StudentCertificatesRoute: typeof StudentCertificatesRoute
+  StudentCommunityRoute: typeof StudentCommunityRoute
+  StudentContentRoute: typeof StudentContentRoute
   StudentCoursesRoute: typeof StudentCoursesRoute
+  StudentFeedbackRoute: typeof StudentFeedbackRoute
+  StudentNotificationsRoute: typeof StudentNotificationsRoute
+  StudentProjectsRoute: typeof StudentProjectsRoute
+  StudentRoadmapRoute: typeof StudentRoadmapRoute
+  StudentSessionsRoute: typeof StudentSessionsRoute
+  StudentSettingsRoute: typeof StudentSettingsRoute
+  StudentTasksRoute: typeof StudentTasksRoute
+  StudentUpgradeRoute: typeof StudentUpgradeRoute
   StudentIndexRoute: typeof StudentIndexRoute
 }
 
 const StudentRouteChildren: StudentRouteChildren = {
+  StudentAssessmentsRoute: StudentAssessmentsRoute,
+  StudentCertificatesRoute: StudentCertificatesRoute,
+  StudentCommunityRoute: StudentCommunityRoute,
+  StudentContentRoute: StudentContentRoute,
   StudentCoursesRoute: StudentCoursesRoute,
+  StudentFeedbackRoute: StudentFeedbackRoute,
+  StudentNotificationsRoute: StudentNotificationsRoute,
+  StudentProjectsRoute: StudentProjectsRoute,
+  StudentRoadmapRoute: StudentRoadmapRoute,
+  StudentSessionsRoute: StudentSessionsRoute,
+  StudentSettingsRoute: StudentSettingsRoute,
+  StudentTasksRoute: StudentTasksRoute,
+  StudentUpgradeRoute: StudentUpgradeRoute,
   StudentIndexRoute: StudentIndexRoute,
 }
 
