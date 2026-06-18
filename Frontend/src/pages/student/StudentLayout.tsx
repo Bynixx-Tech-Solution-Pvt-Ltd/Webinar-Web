@@ -141,7 +141,13 @@ function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) 
               <p className="text-xs text-white/70 mb-4">
                 Unlock premium content, AI assistant and more.
               </p>
-              <Button className="w-full bg-white text-[#5B4AAB] hover:bg-gray-100 font-semibold text-sm">
+              <Button
+                onClick={() => {
+                  navigate({ to: '/student/upgrade' });
+                  onClose();
+                }}
+                className="w-full bg-white text-[#5B4AAB] hover:bg-gray-100 font-semibold text-sm"
+              >
                 Upgrade Now
               </Button>
             </motion.div>
