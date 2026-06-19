@@ -32,21 +32,30 @@ export function LoginPage() {
     setLoading(true);
     setError(null);
     try {
-      if (email === "bynixx" && password === "bynnixxgrow") {
-        const user = {
-          id: crypto.randomUUID(),
-          name: "Bynixx User",
-          email,
-          role: "user",
-          avatar: `https://api.dicebear.com/6.x/initials/svg?seed=Bynixx`,
-        };
-        login(user, "frontend-demo-token");
-        navigate({ to: "/student" });
-      } else {
-        setError("Invalid credentials – use username: bynixx, password: bynnixxgrow");
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setError(data.error || 'Login failed');
+        return;
       }
+      // Assume backend returns userId and role
+      const user = {
+        id: data.userId,
+        name: data.name || email,
+        email,
+        role: data.role,
+        avatar: `https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(email)}`,
+      };
+      login(user, data.token || 'backend-token');
+      // Role‑based navigation
+      const dest = data.role === 'admin' ? '/admin' : data.role === 'mentor' ? '/mentor' : '/student';
+      navigate({ to: dest });
     } catch (err) {
-      setError("An unexpected error occurred.");
+      setError('An unexpected error occurred');
     } finally {
       setLoading(false);
     }
