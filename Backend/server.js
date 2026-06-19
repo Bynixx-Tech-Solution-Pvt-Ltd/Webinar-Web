@@ -1,47 +1,40 @@
-/**
- * Main Express Application Entry Point
- * Initializes the Express server with middleware, routes, and database connections
- */
-
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv');
-
-// Load environment variables
-dotenv.config();
+const pool = require('./config/db');
 
 const app = express();
-
-// Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-// Database connection
-// Import and initialize database connection from config/db.js
-
-// Import routes
-// const authRoutes = require('./routes/authRoutes');
-// const courseRoutes = require('./routes/courseRoutes');
-// const taskRoutes = require('./routes/taskRoutes');
-// const sessionRoutes = require('./routes/sessionRoutes');
-
-// Use routes
-// app.use('/api/auth', authRoutes);
-// app.use('/api/courses', courseRoutes);
-// app.use('/api/tasks', taskRoutes);
-// app.use('/api/sessions', sessionRoutes);
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ error: 'Internal server error' });
+app.get('/test-db', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT NOW()');
+    res.json({
+      success: true,
+      serverTime: result.rows[0]
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
 });
 
-// Start server
-const PORT = process.env.PORT || 5000;
+const PORT = 3000;
+
+// Import auth routes
+const authRoutes = require('./routes/authRoutes');
+// Mount auth API
+app.use('/api/auth', authRoutes);
+
+// Login endpoint
+// Login route moved to authRoutes
+
+app.post('/debug', express.json(), (req, res) => { console.log('DEBUG BODY:', req.body); res.json({ received: req.body }); });
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-module.exports = app;
