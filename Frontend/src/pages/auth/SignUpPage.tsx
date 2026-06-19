@@ -10,6 +10,7 @@ export function SignUpPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    password: '',
     dob: '',
     course: '',
     current_profile: '',
@@ -61,18 +62,36 @@ export function SignUpPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Mock login after successful sign‑up
-    const user = {
-      id: crypto.randomUUID(),
-      name: formData.name,
-      email: formData.email,
-      role: 'student',
-      avatar: `https://api.dicebear.com/6.x/initials/svg?seed=${encodeURIComponent(formData.name)}`,
-    };
-    login(user, 'frontend-mock-token');
-    navigate({ to: '/student' });
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.password) {
+      alert('Please fill all required fields');
+      return;
+    }
+    try {
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+          role: formData.current_profile === 'mentor' ? 'mentor' : 'student',
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        // Backend sends error message in data.error
+        alert(data.error || 'Signup failed');
+        return;
+      }
+      // Signup successful – redirect to login page
+      navigate({ to: '/login' });
+    } catch (err) {
+      console.error(err);
+      alert('An unexpected error occurred');
+    }
   };
 
   // Modern Glassmorphism Input Styles
@@ -138,6 +157,19 @@ export function SignUpPage() {
                   name="email"
                   value={formData.email}
                   placeholder="you@company.com" 
+                  className={`${inputBaseStyles} ${glassInputStyles}`}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              {/* Password */}
+              <div>
+                <label className="block text-gray-800 text-sm font-bold mb-2 ml-1">Password</label>
+                <input 
+                  type="password" 
+                  name="password"
+                  value={formData.password}
+                  placeholder="Create a password" 
                   className={`${inputBaseStyles} ${glassInputStyles}`}
                   onChange={handleChange}
                   required
