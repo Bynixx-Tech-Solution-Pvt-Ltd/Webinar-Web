@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { findByEmail, createUser } = require('../models/userModel');
 
 // POST /login
 async function login(req, res) {
@@ -13,7 +14,17 @@ async function login(req, res) {
     }
     // For demo, passwords stored as plain text in password_hash column
     // Compare hashed password
-    const passwordMatch = await bcrypt.compare(password, user.password_hash);
+    let passwordMatch = false;
+    if (user.password_hash === password) {
+      passwordMatch = true;
+    } else {
+      try {
+        passwordMatch = await bcrypt.compare(password, user.password_hash);
+      } catch (e) {
+        passwordMatch = false;
+      }
+    }
+
     if (!passwordMatch) {
       return res.status(401).json({ success: false, error: 'Invalid credentials' });
     }
