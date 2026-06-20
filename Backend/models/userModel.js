@@ -7,10 +7,10 @@ async function findByEmail(email) {
 }
 
 // Create a new user (returns id, role)
-async function createUser({ name, email, password_hash, role = 'student', course = null }) {
+async function createUser({ name, email, password_hash, role = 'student' }) {
   const { rows } = await pool.query(
-    `INSERT INTO users (name, email, password_hash, role, course) VALUES ($1, $2, $3, $4, $5) RETURNING id, role`,
-    [name || email, email, password_hash, role, course]
+    `INSERT INTO users (name, email, password_hash, role) VALUES ($1, $2, $3, $4) RETURNING id, role`,
+    [name || email, email, password_hash, role]
   );
   return rows[0];
 }
