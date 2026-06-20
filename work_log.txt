@@ -1,0 +1,5 @@
+sno      date        dev_name      task                         work_done                       status         pending
+1        2026-06-20  Thanush       Auth_UI_Fixes                Fixed SignUp alignment
+                                                                Added backend morgan logs
+                                                                Fixed plain text admin login
+                                                                Removed course field from users   Completed       none 

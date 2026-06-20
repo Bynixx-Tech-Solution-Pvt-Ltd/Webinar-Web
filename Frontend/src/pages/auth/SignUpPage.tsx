@@ -12,7 +12,6 @@ export function SignUpPage() {
     email: '',
     password: '',
     dob: '',
-    course: '',
     current_profile: '',
     college_name: '',
     company_name: '',
@@ -95,18 +94,18 @@ export function SignUpPage() {
   };
 
   // Modern Glassmorphism Input Styles
-  const inputBaseStyles = "w-full border rounded-xl px-5 py-3.5 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-200/50";
+  const inputBaseStyles = "w-full border rounded-xl px-4 py-2.5 text-sm transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-200/50";
   const glassInputStyles = "bg-white/50 backdrop-blur-sm border-white/60 placeholder-gray-500 text-blue-950 focus:bg-white/80 focus:border-blue-400";
 
   return (
     <div
       ref={componentRef}
-      className="relative min-h-screen overflow-y-auto bg-gradient-to-br from-blue-50 via-blue-100/50 to-indigo-100 flex items-center justify-center p-4 md:p-20"
+      className="relative min-h-screen overflow-y-auto bg-gradient-to-br from-blue-50 via-blue-100/50 to-indigo-100 flex items-center justify-center p-4 md:p-8 lg:p-12"
     >
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto items-center">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-7xl mx-auto items-center">
         {/* Left Column: Branding & Copy */}
-        <div ref={leftPanelRef} className="flex flex-col justify-center text-blue-950 pr-6 lg:pr-10">
-          <div className="mb-12 lg:mb-16">
+        <div ref={leftPanelRef} className="flex flex-col justify-center text-blue-950 pr-4 lg:pr-8">
+          <div className="mb-8 lg:mb-10">
             <h2 className="text-2xl lg:text-3xl font-bold tracking-tight uppercase flex items-center gap-3">
               <span className="p-2.5 bg-blue-600 rounded-lg text-white shadow-lg shadow-blue-600/30">
                 <BookOpenText className="w-6 h-6 lg:w-7 lg:h-7" />
@@ -114,10 +113,10 @@ export function SignUpPage() {
               Bynix Education
             </h2>
           </div>
-          <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
             Register and<br />watch for <span className="text-blue-600">Free</span>
           </h1>
-          <p className="text-gray-700 text-lg lg:text-xl max-w-md leading-relaxed">
+          <p className="text-gray-700 text-base lg:text-lg max-w-md leading-relaxed">
             Join live webinars worldwide, revisit legendary IT training moments, and enjoy exclusive content in cybersecurity, full stack development, and much more.
           </p>
         </div>
@@ -125,20 +124,20 @@ export function SignUpPage() {
         <div className="flex items-center justify-center w-full">
           <div 
             ref={formCardRef}
-            className="w-full max-w-lg bg-white/40 backdrop-blur-xl p-8 sm:p-10 lg:p-14 rounded-3xl shadow-[0_30px_60px_rgba(37,99,235,0.15)] border border-white/60"
+            className="w-full max-w-lg bg-white/40 backdrop-blur-xl p-6 sm:p-8 lg:p-10 rounded-3xl shadow-[0_30px_60px_rgba(37,99,235,0.15)] border border-white/60"
           >
-            <div className="text-center mb-10">
-              <h2 className="text-blue-950 text-xl font-bold flex items-center justify-center gap-2 mb-4">
+            <div className="text-center mb-6">
+              <h2 className="text-blue-950 text-xl font-bold flex items-center justify-center gap-2 mb-2">
                 <span className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center text-xs text-white shadow-sm">B</span>
                 BYNIX ID
               </h2>
-              <h3 className="text-3xl lg:text-4xl font-extrabold text-blue-950 mb-3">Sign up</h3>
-              <p className="text-gray-700 font-medium">Join for free to access live IT webinars.</p>
+              <h3 className="text-2xl lg:text-3xl font-extrabold text-blue-950 mb-2">Sign up</h3>
+              <p className="text-gray-700 font-medium text-sm">Join for free to access live IT webinars.</p>
             </div>
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-4">
               {/* Name */}
               <div>
-                <label className="block text-gray-800 text-sm font-bold mb-2 ml-1">Name</label>
+                <label className="block text-gray-800 text-sm font-bold mb-1.5 ml-1">Name</label>
                 <input 
                   type="text" 
                   name="name"
@@ -151,7 +150,7 @@ export function SignUpPage() {
               </div>
               {/* Email */}
               <div>
-                <label className="block text-gray-800 text-sm font-bold mb-2 ml-1">Email</label>
+                <label className="block text-gray-800 text-sm font-bold mb-1.5 ml-1">Email</label>
                 <input 
                   type="email" 
                   name="email"
@@ -164,7 +163,7 @@ export function SignUpPage() {
               </div>
               {/* Password */}
               <div>
-                <label className="block text-gray-800 text-sm font-bold mb-2 ml-1">Password</label>
+                <label className="block text-gray-800 text-sm font-bold mb-1.5 ml-1">Password</label>
                 <input 
                   type="password" 
                   name="password"
@@ -177,7 +176,7 @@ export function SignUpPage() {
               </div>
               {/* Profile Type */}
               <div className="relative">
-                <label className="block text-gray-800 text-sm font-bold mb-2 ml-1">Current Profile</label>
+                <label className="block text-gray-800 text-sm font-bold mb-1.5 ml-1">Current Profile</label>
                 <select 
                   name="current_profile"
                   value={formData.current_profile}
@@ -198,7 +197,7 @@ export function SignUpPage() {
               {['student', 'assistant_professor', 'associate_professor', 'professor'].includes(formData.current_profile) && (
                 <>
                   <div>
-                    <label className="block text-gray-800 text-sm font-bold mb-2 ml-1">College / Institution</label>
+                    <label className="block text-gray-800 text-sm font-bold mb-1.5 ml-1">College / Institution</label>
                     <input 
                       type="text" 
                       name="college_name"
@@ -210,7 +209,7 @@ export function SignUpPage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-gray-800 text-sm font-bold mb-2 ml-1">Year of Graduation</label>
+                    <label className="block text-gray-800 text-sm font-bold mb-1.5 ml-1">Year of Graduation</label>
                     <input 
                       type="number" 
                       name="graduation_year"
@@ -228,7 +227,7 @@ export function SignUpPage() {
               {formData.current_profile === 'other' && (
                 <>
                   <div>
-                    <label className="block text-gray-800 text-sm font-bold mb-2 ml-1">Company / Organization</label>
+                    <label className="block text-gray-800 text-sm font-bold mb-1.5 ml-1">Company / Organization</label>
                     <input 
                       type="text" 
                       name="company_name"
@@ -240,7 +239,7 @@ export function SignUpPage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-gray-800 text-sm font-bold mb-2 ml-1">Years of Experience</label>
+                    <label className="block text-gray-800 text-sm font-bold mb-1.5 ml-1">Years of Experience</label>
                     <input 
                       type="number" 
                       name="experience_years"
@@ -257,7 +256,7 @@ export function SignUpPage() {
               )}
               {/* Date of Birth */}
               <div className="relative">
-                <label className="block text-gray-800 text-sm font-bold mb-2 ml-1">Date of Birth</label>
+                <label className="block text-gray-800 text-sm font-bold mb-1.5 ml-1">Date of Birth</label>
                 <div className="relative">
                   <input 
                     type="text" 
@@ -270,35 +269,16 @@ export function SignUpPage() {
                   <Calendar className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5 pointer-events-none" />
                 </div>
               </div>
-              {/* Course Interest */}
-              <div className="relative">
-                <label className="block text-gray-800 text-sm font-bold mb-2 ml-1">Primary Interest</label>
-                <div className="relative">
-                  <select 
-                    name="course"
-                    value={formData.course}
-                    className={`${inputBaseStyles} ${glassInputStyles} appearance-none pr-12 cursor-pointer`}
-                    onChange={handleChange}
-                    required
-                  >
-                    <option value="" disabled>Select an interest</option>
-                    <option value="cyber">Cybersecurity & Incident Response</option>
-                    <option value="fullstack">Full Stack Development (MERN)</option>
-                    <option value="vlsi">VLSI Design & Testing</option>
-                    <option value="cv">AI & Computer Vision</option>
-                  </select>
-                  <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5 pointer-events-none" />
-                </div>
-              </div>
+
               {/* Submit */}
               <button 
                 type="submit" 
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl py-4 mt-6 transition-all duration-300 shadow-lg"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl py-3 mt-4 text-sm transition-all duration-300 shadow-lg"
               >
                 Create Bynix ID
               </button>
             </form>
-            <div className="mt-8 text-center">
+            <div className="mt-6 text-center">
               <p className="text-gray-700 text-sm font-medium hover:text-blue-800 transition-colors">
                 Already have an account? <a href="/login" className="text-blue-700 font-bold hover:underline">Sign in</a>
               </p>
